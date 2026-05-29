@@ -1,154 +1,194 @@
 ---
-name: project-vault-workflow
-category: productivity
-description: Use when managing the current two-layer project system: a thin project vault and Apple Notes project notes. Keep the vault concise and the project note detailed.
+name: aipmo
+description: "AI PMO: WBS-style project, goal, task, and subtask management using thin Markdown indexes plus detailed Apple Notes logs."
 version: 1.0.0
-author: User & Hermes
+author: Hermes Agent
 license: MIT
-platforms: [macos, linux, windows]
+platforms: [macos]
 metadata:
   hermes:
-    tags: [Productivity, Projects, Apple Notes, Project Management, WBS, Vault]
-    related_skills: [obsidian, linear]
+    tags: [AI PMO, Project Management, Goals, Tasks, Subtasks, WBS, Apple Notes]
+    related_skills: [apple-notes]
 ---
 
-# Project Vault Workflow
+# AI PMO
 
-Use this skill for the current project-management setup:
+AI PMO is the user's lightweight project-management operating layer.
 
-- one thin project vault file in `~/dev/project_wishlist.md`
-- one detailed Apple Notes note per project in the `Projects` folder
+The canonical pattern is:
 
-This is the first layer of a larger human-AI work-management system. For now, it only covers projects. Tasks and goals will be layered on later.
+- keep short, scan-friendly lists in Markdown files under `/Users/enkay/dev`
+- keep detailed running logs in Apple Notes, inside the relevant folder
+- use WBS-style links across projects, autonomous goals, tasks, and subtasks
+- let the AI PMO create and maintain subtasks as part of breaking work down
 
-## Overview
+## Canonical indexes
 
-The rule is simple:
+| Layer | Markdown index | Apple Notes detail |
+|---|---|---|
+| Projects | `/Users/enkay/dev/project_wishlist.md` | one note per project in `Projects` |
+| Goals | `/Users/enkay/dev/goal_wishlist.md` | one note per goal in `Goals` |
+| Tasks | `/Users/enkay/dev/task_wishlist.md` | one note per task in `Tasks` |
+| Subtasks | `/Users/enkay/dev/subtask_wishlist.md` | one note per subtask in `SubTasks`, always linked to exactly one parent task |
 
-- the vault stays short, structured, and easy to scan
-- Apple Notes stores the richer history, context, and running log for each project
-- every project gets exactly one note in the `Projects` folder
+The Markdown files are indexes, not journals. Apple Notes is the detailed log.
 
-The vault is the index. Apple Notes is the journal.
+## Data model
 
-## When to Use
+### Projects
 
-Use this skill when:
+Projects are durable areas of work or initiatives.
 
-- a new project is being added
-- a project changes status, scope, priority, or owner
-- a project needs a richer narrative than the vault should hold
-- you need to reconcile the concise vault with the detailed note
-- you want to keep the current project system consistent before expanding to tasks and goals
+Rules:
+- a project can have many linked tasks
+- a project can be referenced by many goals, tasks, or subtasks when useful
+- every project gets one detailed Apple Note in `Projects`
 
-Do not use this skill for task-level systems yet. That comes later.
+### Goals
 
-## Canonical Layout
+Goals are autonomous.
 
-### 1) Thin vault
+Rules:
+- a goal does not have to belong to a project
+- a goal can optionally reference one or more projects if it supports them
+- every goal gets one detailed Apple Note in `Goals`
+- goals are outcome-oriented, not just task containers
 
-Primary file:
+### Tasks
 
-- `/Users/enkay/dev/project_wishlist.md`
+Tasks are actionable work units.
 
-Its job is to summarize projects in a compact table or list. Keep it readable at a glance.
+Rules:
+- a task can be linked to many projects
+- a task can optionally support one or more goals
+- every task gets one detailed Apple Note in `Tasks`
+- tasks should be measurable enough that completion is clear
 
-Recommended contents:
+### Subtasks
 
-- project name
-- short purpose
-- current status
-- next step
-- Apple Notes reference
+Subtasks are the AI PMO's responsibility to create when a task needs decomposition.
 
-Avoid turning the vault into a long log. If the row gets too long, move detail into the project note.
+Rules:
+- every subtask is linked to exactly one parent task
+- a subtask may reference many projects through its parent task or explicit links
+- every subtask gets one detailed Apple Note in `SubTasks`
+- create subtasks proactively when the user gives a broad task, unless the user asks to keep it atomic
 
-### 2) Detailed project notes
+## Status values
 
-Apple Notes folder:
+Use simple, terminal-friendly statuses:
 
-- `Projects`
+- Planned
+- Active
+- Blocked
+- Done
+- Cancelled
+- Backlog
 
-One note per project. Use the project name as the note title. Store:
+## Index schemas
 
-- background
-- decisions
-- status history
-- milestones
-- open questions
-- references to related work
+### Projects
 
-The project note is the durable source of detail.
+`project_wishlist.md`:
+
+```markdown
+| Project | Description | Status | Next Step | Apple Notes |
+|---|---|---|---|---|
+```
+
+### Goals
+
+`goal_wishlist.md`:
+
+```markdown
+| Goal ID | Goal | Status | Next Step | Linked Projects | Apple Notes |
+|---|---|---|---|---|---|
+```
+
+### Tasks
+
+`task_wishlist.md`:
+
+```markdown
+| Task ID | Task | Status | Next Step | Linked Projects | Linked Goals | Apple Notes |
+|---|---|---|---|---|---|---|
+```
+
+### Subtasks
+
+`subtask_wishlist.md`:
+
+```markdown
+| Subtask ID | Subtask | Status | Parent Task ID | Next Step | Linked Projects | Apple Notes / Log Location |
+|---|---|---|---|---|---|---|
+```
 
 ## Workflow
 
-### Add a new project
+### Add or update a project
 
-1. Create or update the Apple Note in `Projects`.
-2. Add a concise row to `project_wishlist.md`.
-3. Link the vault row to the Apple Note by name or reference.
-4. Keep both representations aligned.
+1. Update `/Users/enkay/dev/project_wishlist.md`.
+2. Create or update the matching note in Apple Notes folder `Projects`.
+3. Keep the project note rich: background, decisions, milestones, links, and logs.
 
-### Update an existing project
+### Add or update a goal
 
-1. Update the Apple Note first if the change is detailed or contextual.
-2. Update the vault second if the summary/status changed.
-3. Keep the vault terse; do not copy the full log into it.
+1. Treat the goal as autonomous by default.
+2. Update `/Users/enkay/dev/goal_wishlist.md`.
+3. Create or update the matching note in Apple Notes folder `Goals`.
+4. Link projects only when useful; do not force a project parent.
 
-### Resolve drift
+### Add or update a task
 
-If the vault and the note disagree:
+1. Update `/Users/enkay/dev/task_wishlist.md`.
+2. Link the task to zero, one, or many projects as appropriate.
+3. Link goals if the task supports specific autonomous goals.
+4. Create or update the matching note in Apple Notes folder `Tasks`.
+5. If the task is too broad, AI PMO should create subtasks.
 
-1. Treat the Apple Note as the richer source of context.
-2. Rewrite the vault to match the current summary.
-3. Preserve only the durable high-level facts in the vault.
+### Add or update subtasks
 
-## Practical Rules
+1. Ensure exactly one parent task exists.
+2. Update `/Users/enkay/dev/subtask_wishlist.md`.
+3. Create or update the matching subtask note in Apple Notes folder `SubTasks`.
+4. Reference the parent task ID clearly in both the index and the note.
+5. Do not create orphan subtasks.
 
-- One project, one note.
-- Keep the vault thin.
-- Keep the Apple Note rich.
-- Prefer stable naming.
-- Use the `Projects` folder exactly as spelled, with capital P.
-- Avoid inventing a tasks layer inside this skill.
-- Treat WBS as the eventual structure: project → task → goal.
+## Apple Notes automation
 
-## Common Pitfalls
+Use the `apple-notes` skill. In Hermes/tool sessions, use the non-interactive `memo` editor wrapper rather than opening vim:
 
-1. Mixing the vault and the journal.
-   - Fix: move long-form detail back into Apple Notes.
+```bash
+printf '%s\n' '# Note Title' '' 'Body...' > /tmp/note.md
+EDITOR=/Users/enkay/.hermes/skills/apple/apple-notes/scripts/memo_noninteractive_editor.py \
+  MEMO_NOTE_CONTENT_FILE=/tmp/note.md \
+  memo notes -a -f "Projects"
+```
 
-2. Using the wrong Apple Notes folder name.
-   - Fix: use `Projects`, not lowercase `projects`.
+Use the relevant folder: `Projects`, `Goals`, `Tasks`, or `SubTasks`.
 
-3. Letting the vault become a log file.
-   - Fix: keep only summary fields and the note reference.
+Verify with:
 
-4. Creating multiple notes for the same project.
-   - Fix: maintain exactly one note per project unless the naming scheme is intentionally changed.
+```bash
+memo notes -f "Projects" -nc
+memo notes -f "Projects" -nc -v 1
+```
 
-5. Expanding into tasks too early.
-   - Fix: keep tasks/goals out of scope until the dedicated skill exists.
+## Practical rules
 
-## Verification Checklist
+- Never let the Markdown index become the detailed journal.
+- Never create a subtask without exactly one parent task.
+- Do not force goals under projects; goals are autonomous.
+- Tasks and subtasks can reference multiple projects, but subtasks still have one parent task.
+- Prefer stable IDs: `G-001`, `T-001`, `ST-001`.
+- If the user sends a broad task, decompose it into subtasks as AI PMO unless told not to.
+- Keep updates concise in Markdown and detailed in Apple Notes.
 
-- [ ] `~/dev/project_wishlist.md` has a concise project summary entry
-- [ ] The project has exactly one Apple Note in `Projects`
-- [ ] The note contains the detailed history/context
-- [ ] The vault and note agree on current status
-- [ ] The vault stays shorter than the detailed note
-- [ ] No task-layer conventions were introduced prematurely
+## Verification checklist
 
-## Future Direction
-
-This skill is intentionally stage 1 of a broader human-AI work-management interface based on WBS.
-
-Future layers can add:
-
-- task management
-- goal management
-- dependency tracking
-- progress rollups
-- review and planning loops
-
-When those layers exist, keep this skill focused on the project layer only.
+- [ ] Correct Markdown index updated
+- [ ] Relevant Apple Notes folder/note updated
+- [ ] Goal autonomy preserved
+- [ ] Task multi-project links preserved where needed
+- [ ] Every subtask has exactly one parent task
+- [ ] Detailed log lives in Apple Notes, not only in Markdown
