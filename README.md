@@ -15,10 +15,10 @@ It uses a simple pattern:
 
 | Layer | Markdown index | Apple Notes detail |
 |---|---|---|
-| Projects | `/Users/enkay/dev/project_wishlist.md` | `Projects` folder |
-| Goals | `/Users/enkay/dev/goal_wishlist.md` | `Goals` folder |
-| Tasks | `/Users/enkay/dev/task_wishlist.md` | `Tasks` folder |
-| Subtasks | `/Users/enkay/dev/subtask_wishlist.md` | `SubTasks` folder; exactly one parent task |
+| Projects | `/Users/enkay/dev/project_list.md` | `Projects` folder |
+| Goals | `/Users/enkay/dev/goal_list.md` | `Goals` folder |
+| Tasks | `/Users/enkay/dev/task_list.md` | `Tasks` folder |
+| Subtasks | `/Users/enkay/dev/subtask_list.md` | `SubTasks` folder; exactly one parent task |
 
 ## Rules
 
@@ -31,11 +31,12 @@ It uses a simple pattern:
 
 ## Intake planning pass
 
-For raw tasks, AI PMO performs a research/linking pass before execution:
+For raw tasks, AI PMO performs a research/linking draft before execution:
 
 - write a 2-3 line research summary
 - suggest existing or new linked projects
 - add one first execution-planning step
+- verify the draft with the user before logging to Apple Notes or making it canonical
 - avoid creating subtasks unless explicitly requested
 
 ## Hermes skill

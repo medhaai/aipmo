@@ -26,10 +26,10 @@ The canonical pattern is:
 
 | Layer | Markdown index | Apple Notes detail |
 |---|---|---|
-| Projects | `/Users/enkay/dev/project_wishlist.md` | one note per project in `Projects` |
-| Goals | `/Users/enkay/dev/goal_wishlist.md` | one note per goal in `Goals` |
-| Tasks | `/Users/enkay/dev/task_wishlist.md` | one note per task in `Tasks` |
-| Subtasks | `/Users/enkay/dev/subtask_wishlist.md` | one note per subtask in `SubTasks`, always linked to exactly one parent task |
+| Projects | `/Users/enkay/dev/project_list.md` | one note per project in `Projects` |
+| Goals | `/Users/enkay/dev/goal_list.md` | one note per goal in `Goals` |
+| Tasks | `/Users/enkay/dev/task_list.md` | one note per task in `Tasks` |
+| Subtasks | `/Users/enkay/dev/subtask_list.md` | one note per subtask in `SubTasks`, always linked to exactly one parent task |
 
 The Markdown files are indexes, not journals. Apple Notes is the detailed log.
 
@@ -89,7 +89,7 @@ Use simple, terminal-friendly statuses:
 
 ### Projects
 
-`project_wishlist.md`:
+`project_list.md`:
 
 ```markdown
 | Project | Description | Status | Next Step | Apple Notes |
@@ -98,7 +98,7 @@ Use simple, terminal-friendly statuses:
 
 ### Goals
 
-`goal_wishlist.md`:
+`goal_list.md`:
 
 ```markdown
 | Goal ID | Goal | Status | Next Step | Linked Projects | Apple Notes |
@@ -107,7 +107,7 @@ Use simple, terminal-friendly statuses:
 
 ### Tasks
 
-`task_wishlist.md`:
+`task_list.md`:
 
 ```markdown
 | Task ID | Task | Status | Next Step | Linked Projects | Linked Goals | Apple Notes |
@@ -116,46 +116,49 @@ Use simple, terminal-friendly statuses:
 
 ### Subtasks
 
-`subtask_wishlist.md`:
+`subtask_list.md`:
 
 ```markdown
 | Subtask ID | Subtask | Status | Parent Task ID | Next Step | Linked Projects | Apple Notes / Log Location |
 |---|---|---|---|---|---|---|
 ```
 
-## Task research, project-linking, and first-step planning
+## Task research, user verification, project-linking, and first-step planning
 
 When new tasks are captured, AI PMO should perform an intake planning pass before execution:
 
 1. Research each task enough to understand context, opportunity, constraints, and risks.
-2. Write a 2-3 line research summary in the task's Apple Notes entry.
-3. Suggest linked projects:
+2. Draft a 2-3 line research summary, suggested linked projects, and one first execution-planning step.
+3. Present the draft to the user for verification before logging it to Apple Notes or treating it as canonical.
+4. Ask the user to correct assumptions, confirm project links, and approve any suggested new projects.
+5. Only after user verification, update the task index and Apple Notes entry.
+6. Suggest linked projects:
    - connect to existing projects when the relationship is clear
    - if no existing project fits, mark a suggested new project rather than creating it automatically
    - tasks may link to many projects
-4. Add exactly one first execution-planning step to the task index and task note.
-5. Do **not** create subtasks during this intake pass unless the user explicitly asks for decomposition.
+7. Add exactly one first execution-planning step to the task index and task note.
+8. Do **not** create subtasks during this intake pass unless the user explicitly asks for decomposition.
 
-This step turns a raw task into a ready-to-plan work item without prematurely moving into execution.
+This step turns a raw task into a ready-to-plan work item without prematurely moving into execution. Unverified research is a draft, not a log.
 
 ## Workflow
 
 ### Add or update a project
 
-1. Update `/Users/enkay/dev/project_wishlist.md`.
+1. Update `/Users/enkay/dev/project_list.md`.
 2. Create or update the matching note in Apple Notes folder `Projects`.
 3. Keep the project note rich: background, decisions, milestones, links, and logs.
 
 ### Add or update a goal
 
 1. Treat the goal as autonomous by default.
-2. Update `/Users/enkay/dev/goal_wishlist.md`.
+2. Update `/Users/enkay/dev/goal_list.md`.
 3. Create or update the matching note in Apple Notes folder `Goals`.
 4. Link projects only when useful; do not force a project parent.
 
 ### Add or update a task
 
-1. Update `/Users/enkay/dev/task_wishlist.md`.
+1. Update `/Users/enkay/dev/task_list.md`.
 2. Link the task to zero, one, or many projects as appropriate.
 3. Link goals if the task supports specific autonomous goals.
 4. Create or update the matching note in Apple Notes folder `Tasks`.
@@ -164,7 +167,7 @@ This step turns a raw task into a ready-to-plan work item without prematurely mo
 ### Add or update subtasks
 
 1. Ensure exactly one parent task exists.
-2. Update `/Users/enkay/dev/subtask_wishlist.md`.
+2. Update `/Users/enkay/dev/subtask_list.md`.
 3. Create or update the matching subtask note in Apple Notes folder `SubTasks`.
 4. Reference the parent task ID clearly in both the index and the note.
 5. Do not create orphan subtasks.
