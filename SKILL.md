@@ -123,6 +123,21 @@ Use simple, terminal-friendly statuses:
 |---|---|---|---|---|---|---|
 ```
 
+## Task research, project-linking, and first-step planning
+
+When new tasks are captured, AI PMO should perform an intake planning pass before execution:
+
+1. Research each task enough to understand context, opportunity, constraints, and risks.
+2. Write a 2-3 line research summary in the task's Apple Notes entry.
+3. Suggest linked projects:
+   - connect to existing projects when the relationship is clear
+   - if no existing project fits, mark a suggested new project rather than creating it automatically
+   - tasks may link to many projects
+4. Add exactly one first execution-planning step to the task index and task note.
+5. Do **not** create subtasks during this intake pass unless the user explicitly asks for decomposition.
+
+This step turns a raw task into a ready-to-plan work item without prematurely moving into execution.
+
 ## Workflow
 
 ### Add or update a project

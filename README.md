@@ -29,6 +29,15 @@ It uses a simple pattern:
 - Markdown files are concise lists/indexes.
 - Apple Notes holds the detailed logs in the relevant folder.
 
+## Intake planning pass
+
+For raw tasks, AI PMO performs a research/linking pass before execution:
+
+- write a 2-3 line research summary
+- suggest existing or new linked projects
+- add one first execution-planning step
+- avoid creating subtasks unless explicitly requested
+
 ## Hermes skill
 
 The reusable Hermes skill is in `SKILL.md`.
