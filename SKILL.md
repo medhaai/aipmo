@@ -192,6 +192,22 @@ memo notes -f "Projects" -nc
 memo notes -f "Projects" -nc -v 1
 ```
 
+## Channel-aware and phone-first research artifact handling
+
+When the user is interacting from WhatsApp or another phone-first channel, long Markdown dumps and direct file attachments are hard to review on iPhone. For AI PMO research packs, viability studies, source guides, generated documents, and NotebookLM handoffs:
+
+1. Do **not** send files directly in WhatsApp unless the user explicitly asks for a native attachment.
+2. Store artifacts locally under `/Users/enkay/dev/research/<project-or-topic-slug>/` for research projects, or another clearly named designated folder for non-research deliverables.
+3. In WhatsApp, share the folder path or accessible link plus a brief summary: what the file/folder contains, why it matters, and the next action.
+4. Keep the Markdown/files structured and reviewable on desktop: study draft, source guide/import guide, source CSV when needed, and any subtask-specific research notes.
+5. Report only the folder/link, key filenames, and short status/next-step summary in chat; avoid pasting long Markdown.
+6. If duplicate Markdown copies exist in multiple source locations, compare them and keep only one canonical copy in the research folder when they are identical.
+7. Add a `README.md` inside the research folder linking it to the AI PMO project, parent task, related subtasks, file inventory, draft/canonical status, and blockers.
+8. Update all corresponding AI PMO surfaces, not just the filesystem: Markdown indexes plus Apple Notes project/task/subtask logs.
+9. For NotebookLM handoffs, prefer a local source pack plus import guide when direct NotebookLM access is blocked by login, password, 2FA, or MCP/API security concerns.
+
+See `references/phone-first-research-folder-consolidation.md` for the detailed consolidation and linking pattern.
+
 ## Practical rules
 
 - Never let the Markdown index become the detailed journal.

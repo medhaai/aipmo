@@ -39,6 +39,18 @@ For raw tasks, AI PMO performs a research/linking draft before execution:
 - verify the draft with the user before logging to Apple Notes or making it canonical
 - avoid creating subtasks unless explicitly requested
 
+## Channel-aware research artifacts
+
+For WhatsApp/iPhone workflows, AI PMO should avoid sending files directly unless the user explicitly asks for a native attachment.
+
+For research projects and file-producing work:
+
+- store artifacts under `/Users/enkay/dev/research/<project-or-topic-slug>/`
+- add a README linking the folder to the project/task/subtasks
+- update the Markdown indexes and Apple Notes logs with the folder path
+- in WhatsApp, share only the folder path/link, key filenames, brief summary, and next step
+- avoid pasting long Markdown or attaching files directly by default
+
 ## Hermes skill
 
 The reusable Hermes skill is in `SKILL.md`.
