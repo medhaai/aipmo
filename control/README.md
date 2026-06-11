@@ -29,6 +29,12 @@ Local black-and-white dashboard for the AI PMO Markdown indexes.
 python3 /Users/enkay/dev/aipmo/control/backend/app.py
 ```
 
+If port 8787 is already in use, set a different port:
+
+```bash
+PORT=8788 python3 /Users/enkay/dev/aipmo/control/backend/app.py
+```
+
 Then open:
 
 ```text

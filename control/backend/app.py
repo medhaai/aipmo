@@ -4,6 +4,7 @@ import json
 import mimetypes
 from datetime import datetime
 from hashlib import md5
+import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
@@ -403,8 +404,17 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main():
     host = '127.0.0.1'
-    port = 8787
-    server = ThreadingHTTPServer((host, port), Handler)
+    port = int(os.environ.get('PORT', '8787'))
+    try:
+        server = ThreadingHTTPServer((host, port), Handler)
+    except OSError as exc:
+        if exc.errno == 48:
+            print(
+                f'Port {port} is already in use. Set PORT to a free port, for example: PORT=8788 python3 /Users/enkay/dev/aipmo/control/backend/app.py',
+                flush=True,
+            )
+            return
+        raise
     print(f'AI PMO control app running on http://{host}:{port}', flush=True)
     server.serve_forever()
 
