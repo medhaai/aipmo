@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI PMO Control</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-row">
+          <div>
+            <div class="eyebrow"><i data-lucide="folder-kanban" class="icon"></i> AI PMO</div>
+            <h1>Control Console</h1>
+            <p>Local view over projects, tasks, subtasks, and orphan work.</p>
+          </div>
+          <div class="header-actions">
+            <button class="pill buttonish" id="theme-toggle" title="Toggle theme"><i data-lucide="moon-star" class="icon"></i><span id="theme-label">Dark</span></button>
+            <div class="pill" id="last-updated">Loading…</div>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <label class="search-wrap">
+            <i data-lucide="search" class="icon"></i>
+            <input id="search-input" class="search" placeholder="Search tasks, projects, notes, ids…" />
+          </label>
+          <select id="status-filter" class="select"><option value="all">All statuses</option></select>
+          <select id="type-filter" class="select"><option value="all">All types</option></select>
+          <select id="project-filter" class="select"><option value="all">All projects</option></select>
+        </div>
+      </header>
+
+      <main class="grid-shell">
+        <section class="surface" data-section="projects">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><i data-lucide="folder-kanban" class="icon"></i> Projects</div>
+              <h2 class="section-title">Active map</h2>
+            </div>
+            <div class="section-actions">
+              <div class="pill" id="project-count">0</div>
+              <button class="pill buttonish section-toggle" data-toggle="projects">Hide</button>
+            </div>
+          </div>
+          <div class="section-body" id="projects-body"><div id="projects" class="stack"></div></div>
+        </section>
+
+        <section class="surface" data-section="tasks">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><i data-lucide="layers-3" class="icon"></i> Tasks</div>
+              <h2 class="section-title">Status board</h2>
+            </div>
+            <div class="section-actions">
+              <div class="pill" id="task-count">0</div>
+              <button class="pill buttonish section-toggle" data-toggle="tasks">Hide</button>
+            </div>
+          </div>
+          <div class="section-body" id="board-body"><div id="board" class="board"></div></div>
+        </section>
+
+        <section class="surface sidebar" data-section="orphans-subtasks">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><i data-lucide="triangle-alert" class="icon"></i> Orphans</div>
+              <h2 class="section-title">Needs decision</h2>
+            </div>
+            <div class="section-actions">
+              <div class="pill" id="orphan-count">0</div>
+              <button class="pill buttonish section-toggle" data-toggle="orphans-subtasks">Hide</button>
+            </div>
+          </div>
+          <div class="section-body" id="orphans-subtasks-body">
+            <div class="subpanel">
+              <div class="subhead">Tasks without canonical project</div>
+              <div id="orphans" class="stack"></div>
+            </div>
+            <div class="subpanel mt-4">
+              <div class="subhead">Subtask deep dive</div>
+              <div id="subtask-groups" class="stack"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside id="drawer" class="drawer hidden"></aside>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
