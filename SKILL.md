@@ -17,7 +17,7 @@ AI PMO is the user's lightweight project-management operating layer.
 
 The canonical pattern is:
 
-- keep short, scan-friendly lists in Markdown files under `/Users/enkay/dev`
+- keep short, scan-friendly lists in Markdown files under `~/dev`
 - keep detailed running logs in Apple Notes, inside the relevant folder
 - use WBS-style links across projects, autonomous goals, tasks, and subtasks
 - let the AI PMO create and maintain subtasks as part of breaking work down
@@ -26,10 +26,10 @@ The canonical pattern is:
 
 | Layer | Markdown index | Apple Notes detail |
 |---|---|---|
-| Projects | `/Users/enkay/dev/project_list.md` | one note per project in `Projects` |
-| Goals | `/Users/enkay/dev/goal_list.md` | one note per goal in `Goals` |
-| Tasks | `/Users/enkay/dev/task_list.md` | one note per task in `Tasks` |
-| Subtasks | `/Users/enkay/dev/subtask_list.md` | one note per subtask in `SubTasks`, always linked to exactly one parent task |
+| Projects | `~/dev/project_list.md` | one note per project in `Projects` |
+| Goals | `~/dev/goal_list.md` | one note per goal in `Goals` |
+| Tasks | `~/dev/task_list.md` | one note per task in `Tasks` |
+| Subtasks | `~/dev/subtask_list.md` | one note per subtask in `SubTasks`, always linked to exactly one parent task |
 
 The Markdown files are indexes, not journals. Apple Notes is the detailed log.
 
@@ -145,20 +145,20 @@ This step turns a raw task into a ready-to-plan work item without prematurely mo
 
 ### Add or update a project
 
-1. Update `/Users/enkay/dev/project_list.md`.
+1. Update `~/dev/project_list.md`.
 2. Create or update the matching note in Apple Notes folder `Projects`.
 3. Keep the project note rich: background, decisions, milestones, links, and logs.
 
 ### Add or update a goal
 
 1. Treat the goal as autonomous by default.
-2. Update `/Users/enkay/dev/goal_list.md`.
+2. Update `~/dev/goal_list.md`.
 3. Create or update the matching note in Apple Notes folder `Goals`.
 4. Link projects only when useful; do not force a project parent.
 
 ### Add or update a task
 
-1. Update `/Users/enkay/dev/task_list.md`.
+1. Update `~/dev/task_list.md`.
 2. Link the task to zero, one, or many projects as appropriate.
 3. Link goals if the task supports specific autonomous goals.
 4. Create or update the matching note in Apple Notes folder `Tasks`.
@@ -167,7 +167,7 @@ This step turns a raw task into a ready-to-plan work item without prematurely mo
 ### Add or update subtasks
 
 1. Ensure exactly one parent task exists.
-2. Update `/Users/enkay/dev/subtask_list.md`.
+2. Update `~/dev/subtask_list.md`.
 3. Create or update the matching subtask note in Apple Notes folder `SubTasks`.
 4. Reference the parent task ID clearly in both the index and the note.
 5. Do not create orphan subtasks.
@@ -178,7 +178,7 @@ Use the `apple-notes` skill. In Hermes/tool sessions, use the non-interactive `m
 
 ```bash
 printf '%s\n' '# Note Title' '' 'Body...' > /tmp/note.md
-EDITOR=/Users/enkay/.hermes/skills/apple/apple-notes/scripts/memo_noninteractive_editor.py \
+EDITOR=$HERMES_HOME/skills/apple/apple-notes/scripts/memo_noninteractive_editor.py \
   MEMO_NOTE_CONTENT_FILE=/tmp/note.md \
   memo notes -a -f "Projects"
 ```
@@ -197,7 +197,7 @@ memo notes -f "Projects" -nc -v 1
 When the user is interacting from WhatsApp or another phone-first channel, long Markdown dumps and direct file attachments are hard to review on iPhone. For AI PMO research packs, viability studies, source guides, generated documents, and NotebookLM handoffs:
 
 1. Do **not** send files directly in WhatsApp unless the user explicitly asks for a native attachment.
-2. Store artifacts locally under `/Users/enkay/dev/research/<project-or-topic-slug>/` for research projects, or another clearly named designated folder for non-research deliverables.
+2. Store artifacts locally under `~/dev/research/<project-or-topic-slug>/` for research projects, or another clearly named designated folder for non-research deliverables.
 3. In WhatsApp, share the folder path or accessible link plus a brief summary: what the file/folder contains, why it matters, and the next action.
 4. Keep the Markdown/files structured and reviewable on desktop: study draft, source guide/import guide, source CSV when needed, and any subtask-specific research notes.
 5. Report only the folder/link, key filenames, and short status/next-step summary in chat; avoid pasting long Markdown.

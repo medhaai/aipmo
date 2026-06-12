@@ -4,7 +4,7 @@ AI PMO is a lightweight WBS-style project-management operating layer for Hermes 
 
 It uses a simple pattern:
 
-- thin Markdown indexes in `/Users/enkay/dev`
+- thin Markdown indexes in `~/dev`
 - detailed running logs in Apple Notes
 - autonomous goals
 - tasks that can link to many projects
@@ -15,10 +15,10 @@ It uses a simple pattern:
 
 | Layer | Markdown index | Apple Notes detail |
 |---|---|---|
-| Projects | `/Users/enkay/dev/project_list.md` | `Projects` folder |
-| Goals | `/Users/enkay/dev/goal_list.md` | `Goals` folder |
-| Tasks | `/Users/enkay/dev/task_list.md` | `Tasks` folder |
-| Subtasks | `/Users/enkay/dev/subtask_list.md` | `SubTasks` folder; exactly one parent task |
+| Projects | `~/dev/project_list.md` | `Projects` folder |
+| Goals | `~/dev/goal_list.md` | `Goals` folder |
+| Tasks | `~/dev/task_list.md` | `Tasks` folder |
+| Subtasks | `~/dev/subtask_list.md` | `SubTasks` folder; exactly one parent task |
 
 ## Rules
 
@@ -45,7 +45,7 @@ For WhatsApp/iPhone workflows, AI PMO should avoid sending files directly unless
 
 For research projects and file-producing work:
 
-- store artifacts under `/Users/enkay/dev/research/<project-or-topic-slug>/`
+- store artifacts under `~/dev/research/<project-or-topic-slug>/`
 - add a README linking the folder to the project/task/subtasks
 - update the Markdown indexes and Apple Notes logs with the folder path
 - in WhatsApp, share only the folder path/link, key filenames, brief summary, and next step

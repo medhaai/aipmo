@@ -4,10 +4,10 @@ Local black-and-white dashboard for the AI PMO Markdown indexes.
 
 ## What it does
 
-- reads `/Users/enkay/dev/project_list.md`
-- reads `/Users/enkay/dev/task_list.md`
-- reads `/Users/enkay/dev/subtask_list.md`
-- reads `/Users/enkay/dev/goal_list.md`
+- reads `~/dev/project_list.md`
+- reads `~/dev/task_list.md`
+- reads `~/dev/subtask_list.md`
+- reads `~/dev/goal_list.md`
 - shows:
   - projects
   - task status board
@@ -26,13 +26,13 @@ Local black-and-white dashboard for the AI PMO Markdown indexes.
 ## Run
 
 ```bash
-python3 /Users/enkay/dev/aipmo/control/backend/app.py
+python3 ~/dev/aipmo/control/backend/app.py
 ```
 
 If port 8787 is already in use, set a different port:
 
 ```bash
-PORT=8788 python3 /Users/enkay/dev/aipmo/control/backend/app.py
+PORT=8788 python3 ~/dev/aipmo/control/backend/app.py
 ```
 
 Then open:

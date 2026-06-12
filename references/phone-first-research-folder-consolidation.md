@@ -21,7 +21,7 @@ Instead:
 2. For AI PMO research projects, use:
 
 ```text
-/Users/enkay/dev/research/<project-or-topic-slug>/
+~/dev/research/<project-or-topic-slug>/
 ```
 
 3. Share the folder path or link in WhatsApp.
@@ -34,13 +34,13 @@ This keeps the artifact accessible from iPhone without forcing review inside a W
 Create one canonical folder:
 
 ```text
-/Users/enkay/dev/research/<project-or-task-slug>/
+~/dev/research/<project-or-task-slug>/
 ```
 
 For example:
 
 ```text
-/Users/enkay/dev/research/k0-viability/
+~/dev/research/k0-viability/
 ```
 
 Include a `README.md` that links the folder to AI PMO objects:
@@ -54,7 +54,7 @@ Include a `README.md` that links the folder to AI PMO objects:
 
 ## Consolidation steps
 
-1. Find all related Markdown/CSV/zip artifacts under `/Users/enkay/dev`.
+1. Find all related Markdown/CSV/zip artifacts under `~/dev`.
 2. Copy/move them into the canonical research folder.
 3. Compare duplicates before deleting stale copies. Delete only when represented in the canonical folder and byte-identical or otherwise clearly superseded.
 4. Add/update the `README.md` with a compact file inventory and AI PMO links.
