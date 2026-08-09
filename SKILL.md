@@ -22,6 +22,12 @@ The canonical pattern is:
 - use WBS-style links across projects, autonomous goals, tasks, and subtasks
 - let the AI PMO create and maintain subtasks as part of breaking work down
 
+## Canonical Workspace Convention
+
+AI PMO governs both projects and reusable skills. Keep source code and skill definitions in version-controlled repositories under `~/dev/<name>/`. Treat `~/.hermes/skills/` as the runtime/deployment copy only. Store generated data, lessons, state, exports, and artifacts under `~/dev/medha/data/<area>/`; do not commit them to skill repositories.
+
+Every repository gets one primary AI PMO home, recorded in `~/dev/repository_registry.md`. A skill is also a project: it has a scope, lifecycle status, repository, decisions, tasks, and milestones. A repository may support related projects, but it must have one primary home.
+
 ## Canonical indexes
 
 | Layer | Markdown index | Apple Notes detail |
